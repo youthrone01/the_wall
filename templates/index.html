@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Registration/Login</title>
+    <style>
+      label{
+          display: block;
+          margin-top: 10px;
+      }
+    </style>
+</head>
+<body>   
+     
+    <h1>Registration</h1>   
+    <form action='/registration' method='POST'>
+        <label for="first_name">First Name:<input type="text" name="first_name" placeholder="First" ></label>
+        <label for="last_name">Last Name:<input type="text" name="last_name" placeholder="Last"></label>
+        <label for="email">Email Address:<input type="text" name="email" ></label>
+        <label for="password">Password:<input type="text" name="password" ></label>
+        <label for="confir_pw">Password Confirmation:<input type="text" name="confir_pw"></label>
+        <input type="submit" value="Register">
+    </form>
+    <br>
+    <hr>
+    <h1>Login</h1>   
+    <form action='/login' method='POST'>
+        <label for="login_email">Email Address:<input type="text" name="login_email" ></label>
+        <label for="login_pw">Password:<input type="text" name="login_pw" ></label>
+        <input type="submit" value="Login">
+    </form>
+    <hr>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class=flashes>
+        {% for category,message in messages %}
+        <li class="{{ category }}">{{message}}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+</body>
+</html>
